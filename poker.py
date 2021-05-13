@@ -65,7 +65,7 @@ def main():
             [[self.append(Card(i, j)) for j in suits] for i in values]
 
         def __repr__(self):
-            return f"Standard deck of cards\n{len(self)} cards remaining"
+            return "Standard deck of cards\n{len(self)} cards remaining"
 
         def shuffle(self):
             random.shuffle(self)
@@ -177,20 +177,20 @@ def main():
             print("\n")
             for player in self.list_of_players:
                 print("\n")
-                print(f"Name: {player.name}")
-                print(f"Cards: {player.cards}")
-                print(f"Player score: {player.score}")
-                print(f"Chips: {player.chips}")
-                print(f"Special Attributes: {player.list_of_special_attributes}")
+                print("Name: {player.name}")
+                print("Cards: {player.cards}")
+                print("Player score: {player.score}")
+                print("Chips: {player.chips}")
+                print("Special Attributes: {player.list_of_special_attributes}")
                 if player.fold:
-                    print(f"Folded")
+                    print("Folded")
                 if player.all_in:
-                    print(f"All-in")
-                print(f"Stake: {player.stake}")
-                print(f"Stake-gap: {player.stake_gap}")
+                    print("All-in")
+                print("Stake: {player.stake}")
+                print("Stake-gap: {player.stake_gap}")
                 print("\n")
-            print(f"Pot: {self.pot}")
-            print(f"Community cards: {self.cards}")
+            print("Pot: {self.pot}")
+            print("Community cards: {self.cards}")
             print("\n")
 
         def establish_player_attributes(self):
@@ -223,13 +223,13 @@ def main():
             self.deck.burn()
             print("\n--card burned--")
             self.deck.deal(self, 1)
-            print(f"\nCommunity Cards: {self.cards}")
+            print("\nCommunity Cards: {self.cards}")
 
         def deal_river(self):
             self.deck.burn()
             print("\n--card burned--")
             self.deck.deal(self, 1)
-            print(f"\n\nCommunity Cards: {self.cards}")
+            print("\n\nCommunity Cards: {self.cards}")
 
         def hand_scorer(self, player):
             seven_cards = player.cards + self.cards
@@ -332,7 +332,7 @@ def main():
                 for value_name, count in value_counter.items():
                     if count == 4:
                         four_of_a_kind_value = value_name
-                        four_of_a_kind: True
+                        four_of_a_kind= True
                 for value in value_list:
                     if value != four_of_a_kind_value:
                         other_card_value = value
@@ -360,7 +360,7 @@ def main():
             if self.fold_out:
                 for player in list(set(self.winners)):
                     player.chips += int((self.pot / len(list(set(self.winners)))))
-                    print(f"{player.name} wins {int((self.pot / len(list(set(self.winners)))))} chips!")
+                    print("{player.name} wins {int((self.pot / len(list(set(self.winners)))))} chips!")
             else:
                 list_of_stakes = []
                 for player in self.list_of_players_not_out:
@@ -415,7 +415,7 @@ def main():
                                 winners.append(player)
                     prize = int(list_of_pots[i] / len(winners))
                     for player in winners:
-                        print(f"{player.name} wins {prize} chips!")
+                        print("{player.name} wins {prize} chips!")
                         player.chips += prize
                         self.pot -= prize
                 for player in self.list_of_players_not_out:
@@ -428,9 +428,9 @@ def main():
                         print("\n" + player.name + ": " + str(player.cards) + "\n\t" + "[FOLDED]")
                     else:
                         print("\n" + player.name + ": " + str(player.cards) + "\n\t" + score_interpreter(player))
-                    print(f"\tScoreCode: {player.score}")
-                    print(f"Pot: {self.pot}")
-                [print(player.name, player.chips) for player in self.list_of_players_not_out]
+                    print("\tScoreCode: {player.score}")
+                    print("Pot: {self.pot}")
+                print (player.name, player.chips) for(player) in self.list_of_players_not_out
 
         def clear_board(self):
             self.possible_responses.clear()
